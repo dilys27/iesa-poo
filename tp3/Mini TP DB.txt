@@ -1,0 +1,46 @@
+Mini TP DB
+
+1) Donner la commande qui permet de lister les tables présente dans le fichier chinook.db
+
+sqlite3 db/chinook.db
+.tables
+
+2) Donner la commande qui permet de lister les tables se terminant par 's'
+
+.tables '%s'
+
+3) Donner la commande qui permet de visualiser la construction de la table 'albums'
+
+.schema albums
+
+4) Donner la commande qui permet de visualiser la construction de toutes les tables
+
+.fullschema
+
+5) Donner la commande qui permet de selectionner toutes les occurrences de la table TRACKS
+
+SELECT * FROM tracks;
+
+6) Donner l'instruction qui permet de selectionner les 10 premiers 'albumID' de la table albums ordonné par 'artistID'
+
+SELECT albumid FROM albums ORDER BY artistid ASC LIMIT 0,10;
+
+7) Donner la commande qui permet de selectionner les 10 premiers nom de la table tracks ordonné par 'albumid'
+
+SELECT name FROM tracks ORDER BY albumid ASC LIMIT 0,10;
+
+8) Donner la commande qui permet de selectionner les 10 premiers nom de la table tracks ou 'albumid' = 1
+
+SELECT name FROM tracks WHERE albumid=1 LIMIT 0,10;
+
+9) Donner la commande qui permet de selectionner les 10 premiers nom de la table tracks ou 'albumid' = 1 et la durée du son est > 252980 ms
+
+SELECT name FROM tracks WHERE albumid=1 AND milliseconds > 252980 LIMIT 0,10;
+
+10) Donner la commande qui permet de selectionner les 10 premiers nom de la table tracks ou le 'type media' est 1 et/ou 2 ordonné par nom de tracks
+
+SELECT name FROM tracks WHERE mediatypeid IN (1,2) ORDER BY name ASC LIMIT 0,10;
+
+11) Donner la commande qui permet de selectionner les artistes, les ID de ces artistes et les ID des albums (de la table artiste) tel que les ID des artistes soit les mêmes que les ID de leurs albums. Tout cela ordonné par ID album.
+
+SELECT artists.artistid, name, albumid FROM artists INNER JOIN albums on albums.artistid = artists.artistid ORDER BY albumid ASC;
