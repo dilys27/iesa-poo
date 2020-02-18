@@ -24,3 +24,11 @@ Modèle et régression linéaire avec sklearn
 
 Questions sur l'utilisation des dataframes, requêtes SQL et spark
 
+## TP6
+
+Introduction à Docker
+
+## TP7
+
+Méthode de Régularisation : Lasso & Ridge
+
