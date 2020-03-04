@@ -32,3 +32,10 @@ Introduction à Docker
 
 Méthode de Régularisation : Lasso & Ridge
 
+## TP8
+
+Introduction aux API et applications web Flask
+
+## TP9
+
+Mise en production d'une appli Flask en utilisant une API basée sur un algorithme de machine learning
