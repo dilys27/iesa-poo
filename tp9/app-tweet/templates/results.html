@@ -5,10 +5,10 @@
         <h1>Here are the results</h1>
     </head>
     <body>
-        <h2>Votre tweet : {{tweet}}</h2>
+        <h2>Your tweet : {{ tweet }}</h2>
         <br>
-        <p>Hate Speech : {{probas_dict['hate speech']}} %</p>
-        <p>Offensive Language : {{probas_dict['offensive language']}} %</p>
-        <p>Neither : {{probas_dict['neither']}} %</p>
+        <h3>Hate Speech : {{ probas['hate speech'] }} %</h3>
+        <h3>Offensive Language : {{ probas['offensive language'] }} %</h3>
+        <h3>Neither : {{ probas['neither'] }} %</h3>
     </body>
 </html>
