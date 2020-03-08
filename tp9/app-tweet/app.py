@@ -1,12 +1,9 @@
-import json
 import os
-from flask import Flask, jsonify, request, render_template, redirect
-from flask_cors import CORS
+import sys
+from flask import Flask, request, render_template, redirect
 from joblib import load
 		
 app = Flask(__name__)
-
-#CORS(app)
 
 tweet=""
 clf=load('algo.joblib')
@@ -14,21 +11,22 @@ clf=load('algo.joblib')
 @app.route("/", methods=['GET', 'POST'])
 def home():
     if request.method == "POST":
+        global tweet 
         tweet = request.form['tweet']
         return redirect(request.url+'results')
     return render_template('home.html')
 
 # 0 - hate speech 1 - offensive language 2 - neither
 def return_probas():
-  probas = clf.predict_proba([tweet.lower()]) 
-  print(tweet)
-  print(probas)
-  probas_dict = {
-                'hate speech':probas[0][0],
-                'offensive language':probas[0][1],
-                'neither':probas[0][2]
+    global clf
+    global tweet
+    probas = clf.predict_proba([tweet.lower()]) 
+    probas_dict = {
+                'hate speech':str(round(probas[0][0]*100, 2)),
+                'offensive language':str(round(probas[0][1]*100, 2)),
+                'neither':str(round(probas[0][2]*100, 2))
                 }
-  return jsonify(probas_dict)
+    return probas_dict
 
 
 @app.route('/results')
